@@ -17,8 +17,8 @@ public class PaymentDetails extends AppCompatActivity {
 
 
         Spinner spinner =(Spinner)findViewById(R.id.spinner_expymth);
-        String[] years = {"1996","1997","1998","1998"};
-        spinner.setAdapter(new SpinnerStyle(this, R.layout.spinner_item, years) {
+        String[] month = {"Expiry Month","January","February","March","April","May","June","July","August","September","October","November","December"};
+        spinner.setAdapter(new SpinnerStyle(this, R.layout.spinner_item, month) {
         });
     }
 }

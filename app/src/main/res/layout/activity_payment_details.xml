@@ -33,9 +33,10 @@
         android:layout_gravity="center_horizontal"
         android:textColorHint="@color/grey2"
         android:layout_marginTop="12dp"
-        android:hint="Credit/debit card number"
+        android:hint="@string/hint_creditname"
         android:background="@drawable/edit_text_border"
         android:padding="10dp"
+        android:textColor="@color/white"
         />
     <EditText
         android:layout_width="390dp"
@@ -43,9 +44,10 @@
         android:layout_gravity="center_horizontal"
         android:textColorHint="@color/grey2"
         android:layout_marginTop="15dp"
-        android:hint="Credit/debit card number"
+        android:hint="@string/hint_credit"
         android:background="@drawable/edit_text_border"
         android:padding="10dp"
+        android:textColor="@color/white"
         />
     <Spinner
         android:id="@+id/spinner_expymth"

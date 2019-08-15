@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UserFeedback"
+    android:background="@color/black"
+    android:orientation="vertical"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="248dp"
+        android:background="@drawable/empty_yellow_box"
+        android:orientation="vertical"
+        android:gravity="center_horizontal|center_vertical"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Feedback"
+            android:textStyle="bold"
+            android:textSize="35dp"
+            android:textColor="@color/black"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="The feedback will be received by the ShoPay team to further improve our service. Your identity will remain anonymous.."
+            android:textColor="@color/grey"
+            />
+
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/feedback"
+        android:layout_width="390dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center_horizontal"
+        android:textColorHint="@color/grey2"
+        android:layout_marginTop="12dp"
+        android:textSize="17dp"
+        android:gravity="start"
+        android:hint="Message"
+        android:background="@drawable/edit_text_border"
+        android:padding="10dp"
+        />
+
+    <EditText
+        android:layout_width="390dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center_horizontal"
+        android:textColorHint="@color/grey2"
+        android:layout_marginTop="12dp"
+        android:textSize="17dp"
+        android:gravity="center_vertical"
+        android:hint="Contact Number"
+        android:background="@drawable/edit_text_border"
+        android:padding="10dp"
+        />
+
+    <TextView
+        android:layout_width="390dp"
+        android:layout_height="60dp"
+        android:background="@drawable/edit_text_border"
+        android:padding="10dp"
+        android:layout_marginTop="12dp"
+        android:layout_gravity="center_horizontal"
+        android:text="Screen Size: "
+        android:textColor="@color/grey2"
+        android:textSize="17dp"
+        android:gravity="center_vertical"
+        />
+
+    <TextView
+        android:layout_width="390dp"
+        android:layout_height="60dp"
+        android:background="@drawable/edit_text_border"
+        android:padding="10dp"
+        android:layout_marginTop="12dp"
+        android:layout_gravity="center_horizontal"
+        android:text="Platform: "
+        android:textColor="@color/grey2"
+        android:textSize="17dp"
+        android:gravity="center_vertical"
+        />
+
+    <TextView
+        android:layout_width="390dp"
+        android:layout_height="60dp"
+        android:background="@drawable/edit_text_border"
+        android:padding="10dp"
+        android:layout_marginTop="12dp"
+        android:layout_gravity="center_horizontal"
+        android:text="Version: "
+        android:textColor="@color/grey2"
+        android:textSize="17dp"
+        android:gravity="center_vertical"
+        />
+    <Button
+        android:id="@+id/btnaccount"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_gravity="center_horizontal"
+        android:text="SUBMIT"
+        android:background="@drawable/edit_full_border"
+        android:textSize="18dp"
+        android:textAllCaps="true"
+        android:textColor="@color/black"
+
+        />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+    </ScrollView>
+</LinearLayout>

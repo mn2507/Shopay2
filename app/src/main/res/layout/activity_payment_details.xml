@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PaymentDetails"
+    android:background="@color/black"
+    android:orientation="vertical"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="248dp"
+        android:background="@drawable/empty_yellow_box"
+        android:orientation="vertical"
+        android:gravity="center_horizontal|center_vertical"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Payment Details"
+            android:textStyle="bold"
+            android:textSize="35dp"
+            android:textColor="@color/black"
+            />
+
+    </LinearLayout>
+
+    <EditText
+        android:layout_width="390dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center_horizontal"
+        android:textColorHint="@color/grey2"
+        android:layout_marginTop="12dp"
+        android:hint="Credit/debit card number"
+        android:background="@drawable/edit_text_border"
+        android:padding="10dp"
+        />
+    <EditText
+        android:layout_width="390dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center_horizontal"
+        android:textColorHint="@color/grey2"
+        android:layout_marginTop="15dp"
+        android:hint="Credit/debit card number"
+        android:background="@drawable/edit_text_border"
+        android:padding="10dp"
+        />
+    <Spinner
+        android:id="@+id/spinner_expymth"
+        android:layout_width="115dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="12dp"
+        android:layout_height="50dp"
+        android:textAlignment="center"
+        android:spinnerMode="dropdown"
+        android:entries="@array/expiry_month_arrays"
+        android:prompt="@string/expiry_month_prompt"
+        android:background="@color/yellow"
+        >
+
+    </Spinner>
+</LinearLayout>

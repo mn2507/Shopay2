@@ -1,14 +1,14 @@
 package com.example.shopay;
 
-import android.os.Bundle;
-
 import androidx.appcompat.app.AppCompatActivity;
 
-public class user_login extends AppCompatActivity {
+import android.os.Bundle;
+
+public class AdminFeedback extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.user_login);
+        setContentView(R.layout.activity_admin_feedback);
     }
 }

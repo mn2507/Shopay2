@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FRAGPaymentMethod"
+    android:background="@color/black"
+    android:orientation="vertical"
+    >
+
+    <LinearLayout
+        android:id="@+id/card"
+        android:layout_width="390dp"
+        android:layout_height="220dp"
+        android:background="@drawable/edit_text_border"
+        android:layout_gravity="center_horizontal"
+        android:padding="10dp"
+        android:layout_marginTop="10dp"
+        >
+
+        <ImageView
+            android:id="@+id/card_icon"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/visa_icon"
+            android:layout_marginStart="15dp"
+            />
+
+        <TextView
+            android:id="@+id/card_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="-95dp"
+            android:text="1234 4567 1234 4567"
+            android:textColor="@color/grey2"
+            android:layout_marginTop="110dp"
+            android:textSize="18dp"
+            />
+
+        <TextView
+            android:id="@+id/expiry_card"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="-172dp"
+            android:text="Expiry Date"
+            android:textColor="@color/grey2"
+            android:layout_marginTop="150dp"
+            android:textSize="14dp"
+            />
+
+
+        <ImageView
+            android:id="@+id/card_radiobutton"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:background="@drawable/uncheck_yellow_icon"
+            android:layout_marginStart="219dp"
+            android:layout_marginTop="20dp"
+            />
+        <TextView
+            android:id="@+id/card_expiry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="-250dp"
+            android:text="10/21"
+            android:textColor="@color/grey2"
+            android:layout_marginTop="150dp"
+            android:textSize="14dp"
+            />
+    </LinearLayout>
+
+</LinearLayout>

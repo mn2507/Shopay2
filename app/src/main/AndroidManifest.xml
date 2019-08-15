@@ -9,8 +9,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".test"></activity>
-        <activity android:name=".MainActivity">
+        <activity android:name=".PaymentAuthentication"></activity>
+        <activity android:name=".FRAGPaymentMethod" />
+        <activity android:name=".FRAGAdminFeedbackList" />
+        <activity android:name=".AdminFeedbackList" />
+        <activity android:name=".AdminFeedback" />
+        <activity android:name=".UserFeedback" />
+        <activity android:name=".PaymentDetails" />
+        <activity android:name=".PaymentMethod" />
+        <activity android:name=".ViewActivity" /> <!-- android:theme="@android:style/Theme.Holo" -->
+        <activity android:name=".RegisterActivity" />
+        <activity android:name=".SpinnerStyle"/>
+        <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

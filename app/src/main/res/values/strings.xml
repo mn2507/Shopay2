@@ -3,6 +3,7 @@
     <string name="expiry_month_prompt">Expiration Month</string>
     <string name="hint_credit"><i>Credit/debit card number</i></string>
     <string name="hint_creditname"><i>Name on Card</i></string>
+    <string name="hint_creditcvv"><i>CVV</i></string>
     <string-array name="expiry_month_arrays">
         <item>Expiry Month</item>
         <item>January</item>

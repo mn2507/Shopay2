@@ -18,7 +18,14 @@ public class PaymentDetails extends AppCompatActivity {
 
         Spinner spinner =(Spinner)findViewById(R.id.spinner_expymth);
         String[] month = {"Expiry Month","January","February","March","April","May","June","July","August","September","October","November","December"};
-        spinner.setAdapter(new SpinnerStyle(this, R.layout.spinner_item, month) {
+        spinner.setAdapter(new SpinnerStyle(this, R.layout.spinner_item, month){
         });
+        Spinner spinner2 =(Spinner)findViewById(R.id.spinner_expyyr);
+        String[] year = {"Expiry Year","2019","2020","2021","2022","2023","2024","2025","2026","2027","2028","2029","2030","2031"};
+        spinner2.setAdapter(new SpinnerStyle(this, R.layout.spinner_item, year){
+        });
+        //hiiiiiiiiiiiiiiii
+        //jack was here
+
     }
 }

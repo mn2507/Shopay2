@@ -21,6 +21,7 @@
         <activity android:name=".RegisterActivity" />
         <activity android:name=".SpinnerStyle"/>
         <activity android:name=".LoginActivity">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

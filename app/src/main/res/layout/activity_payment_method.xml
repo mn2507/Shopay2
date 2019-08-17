@@ -25,7 +25,10 @@
             android:text="Credit Cards"
             android:textColor="@color/black"
             android:textSize="35dp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+
+
+            />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

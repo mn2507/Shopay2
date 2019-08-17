@@ -61,6 +61,45 @@
         android:prompt="@string/expiry_month_prompt"
         android:background="@color/yellow"
         >
-
     </Spinner>
+    <Spinner
+        android:id="@+id/spinner_expyyr"
+        android:layout_width="115dp"
+        android:layout_marginTop="-50dp"
+        android:layout_marginLeft="140dp"
+        android:layout_height="50dp"
+        android:textAlignment="center"
+        android:spinnerMode="dropdown"
+        android:entries="@array/expiry_month_arrays"
+        android:prompt="@string/expiry_month_prompt"
+        android:background="@color/yellow"
+        >
+    </Spinner>
+    <EditText
+        android:layout_width="120dp"
+        android:layout_height="50dp"
+
+        android:textColorHint="@color/grey2"
+        android:layout_marginTop="-50dp"
+        android:layout_gravity="end"
+        android:layout_marginRight="11dp"
+        android:hint="@string/hint_creditcvv"
+        android:background="@drawable/edit_text_border"
+        android:padding="10dp"
+        android:textColor="@color/white"
+        />
+
+    <Button
+        android:id="@+id/btnaddaccount"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="35dp"
+        android:text="ADD CARD"
+        android:background="@drawable/edit_full_border"
+        android:textSize="18dp"
+        android:textAllCaps="true"
+        android:textColor="@color/black"
+
+        />
 </LinearLayout>

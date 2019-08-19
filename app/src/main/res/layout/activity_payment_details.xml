@@ -39,6 +39,7 @@
         android:textColor="@color/white"
         />
     <EditText
+        android:id="@+id/credit_type"
         android:layout_width="390dp"
         android:layout_height="50dp"
         android:layout_gravity="center_horizontal"

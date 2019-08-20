@@ -10,7 +10,7 @@ public class PaymentDetails extends AppCompatActivity {
 
     public static final String VISA_PREFIX = "4";
     public static final String MASTERCARD_PREFIX = "51,52,53,54,55,";
-
+    public static final String NONE = "";
 
     private static final String VISA ="Visa";
     private static final String MASTERCARD ="Mastercard";

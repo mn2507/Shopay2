@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UserMainMenu"
+    android:background="@color/black"
+    android:orientation="vertical"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="248dp"
+        android:background="@drawable/empty_yellow_box"
+        android:orientation="vertical"
+        android:gravity="center_horizontal|center_vertical"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Main Menu"
+            android:fontFamily="@font/sfprodisplaybold"
+            android:textStyle="bold"
+            android:textSize="35dp"
+            android:textColor="@color/black"
+            />
+    </LinearLayout>
+
+<Button
+    android:layout_width="130dp"
+    android:layout_height="120dp"
+    android:background="@drawable/empty_yellow_box_curved"
+    android:layout_marginLeft="35dp"
+    android:layout_marginTop="20dp"
+    android:text="Pay"
+    android:fontFamily="@font/sfprodisplaybold"
+    android:textSize="17sp"
+    android:padding="5dp"
+    />
+
+    <Button
+        android:layout_width="130dp"
+        android:layout_height="120dp"
+        android:layout_marginLeft="240dp"
+        android:layout_marginTop="-120dp"
+        android:background="@drawable/empty_yellow_box_curved"
+        android:fontFamily="@font/sfprodisplaybold"
+        android:padding="5dp"
+        android:text="Add payment method"
+        android:textSize="17sp" />
+    <Button
+        android:layout_width="130dp"
+        android:layout_height="120dp"
+        android:background="@drawable/empty_yellow_box_curved"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="240dp"
+        android:text="Give feedback"
+        android:padding="5dp"
+        android:fontFamily="@font/sfprodisplaybold"
+        android:textSize="17sp"
+        />
+    <Button
+        android:layout_width="130dp"
+        android:layout_height="120dp"
+        android:background="@drawable/empty_yellow_box_curved"
+       android:layout_marginTop="-120dp"
+        android:layout_marginLeft="35dp"
+        android:text="Payment History"
+        android:padding="5dp"
+        android:fontFamily="@font/sfprodisplaybold"
+        android:textSize="17sp"
+        />
+    <Button
+        android:layout_width="130dp"
+        android:layout_height="120dp"
+        android:background="@drawable/empty_yellow_box_curved"
+        android:layout_marginTop="29dp"
+        android:layout_marginLeft="35dp"
+        android:text="Logout"
+        android:padding="5dp"
+        android:fontFamily="@font/sfprodisplaybold"
+        android:textSize="17sp"
+        />
+</LinearLayout>
+</ScrollView>

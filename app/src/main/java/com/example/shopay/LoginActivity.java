@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 
 public class LoginActivity extends AppCompatActivity {
+
 Button btnregister;
 
     @Override
@@ -37,7 +38,7 @@ Button btnregister;
 
     public void loginfunc(View view) {
 
-        Intent i=new Intent(getApplicationContext(),PaymentDetails.class);
+        Intent i=new Intent(getApplicationContext(),UserMainMenu.class);
         startActivity(i);
     }}
 

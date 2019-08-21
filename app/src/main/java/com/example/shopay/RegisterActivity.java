@@ -1,22 +1,30 @@
 package com.example.shopay;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
+
+import com.example.shopay.ShopayClass.Userclass;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.auth.User;
 
 public class RegisterActivity <FirebaseFirestore> extends AppCompatActivity {
-    com.google.firebase.firestore.FirebaseFirestore db = com.google.firebase.firestore.FirebaseFirestore.getInstance();
+   com.google.firebase.firestore.FirebaseFirestore db = com.google.firebase.firestore.FirebaseFirestore.getInstance();
     private FirebaseAuth mAuth;
     private ArrayList<String> followings;
     Button btnaccount;
@@ -56,16 +64,29 @@ public class RegisterActivity <FirebaseFirestore> extends AppCompatActivity {
         });
     }
     private void infoDatabase() throws Exception {
-    String username = input_fullname.getText().toString().trim();
+    String fullname = input_fullname.getText().toString().trim();
     String password = input_password.getText().toString().trim();
-    String email = input_email.getText().toString().trim();
+    String username = input_email.getText().toString().trim();
     String address = input_address.getText().toString().trim();
     String city = input_city.getText().toString().trim();
     String state = input_state.getText().toString().trim();
     String zip = input_zip.getText().toString().trim();
     String number = input_number.getText().toString().trim();
 
-    CollectionReference dbUsers = db.collection
+    CollectionReference dbUserdata = db.collection("Userdata");
+    Userclass userclass = new Userclass(fullname,password,username,address,city,state,zip,number);
+    dbUserdata.add(userclass)
+            .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                @Override
+                public void onSuccess(DocumentReference documentReference) {
+                    Toast.makeText(RegisterActivity.this, "Registered", Toast.LENGTH_LONG).show();
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+        @Override
+        public void onFailure(@NonNull Exception e) {
+            Toast.makeText(RegisterActivity.this,"Not Register",Toast.LENGTH_LONG).show();
+        }
+    });
     }
 
     }

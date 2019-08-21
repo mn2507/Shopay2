@@ -13,15 +13,18 @@ import java.util.ArrayList;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
 
 public class RegisterActivity <FirebaseFirestore> extends AppCompatActivity {
+    com.google.firebase.firestore.FirebaseFirestore db = com.google.firebase.firestore.FirebaseFirestore.getInstance();
     private FirebaseAuth mAuth;
     private ArrayList<String> followings;
     Button btnaccount;
     EditText input_fullname, input_email, input_password, input_address, input_city, input_state, input_zip, input_number;
     TextView sign_up;
     CheckBox text_terms;
-    FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+
 
     public RegisterActivity(FirebaseAuth mAuth) {
         this.mAuth = mAuth;

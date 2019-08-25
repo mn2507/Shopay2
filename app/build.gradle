@@ -28,4 +28,5 @@ dependencies {
     implementation 'com.android.support:recyclerview-v7:28.+'
     implementation 'com.google.firebase:firebase-auth:19.0.0'
     implementation 'com.google.firebase:firebase-firestore:21.0.0'
+
 }

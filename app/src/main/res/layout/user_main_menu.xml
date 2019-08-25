@@ -75,6 +75,7 @@
         android:textSize="17sp"
         />
     <Button
+        android:id="@+id/btnlogout"
         android:layout_width="130dp"
         android:layout_height="120dp"
         android:background="@drawable/empty_yellow_box_curved"
@@ -84,6 +85,19 @@
         android:padding="5dp"
         android:fontFamily="@font/sfprodisplaybold"
         android:textSize="17sp"
+        />
+
+    <TextView
+        android:id="@+id/loggedin_user_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="User Email"
+        android:layout_marginTop="-680dp"
+        android:fontFamily="@font/sfprodisplaymediumitalic"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:padding="5dp"
+        android:layout_marginLeft="7dp"
         />
 </LinearLayout>
 </ScrollView>

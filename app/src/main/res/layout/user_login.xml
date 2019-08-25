@@ -86,7 +86,6 @@
         android:textSize="18dp"
         android:textAllCaps="true"
         android:textColor="@color/black"
-        android:onClick="loginfunc"
         android:fontFamily="@font/sfprodisplaybold"
         />
 
@@ -102,4 +101,16 @@
         android:textColor="@color/black"
         android:textSize="18dp" />
 
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        android:max="100"
+        android:backgroundTint="@color/white"
+        android:layout_below="@+id/framelauout"
+        android:indeterminateTint="#1a09d6"
+        android:layout_marginTop="-370dp"
+        />
 </LinearLayout>

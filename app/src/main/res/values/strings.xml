@@ -6,6 +6,7 @@
     <string name="hint_creditcvv"><i>CVV</i></string>
     <string name="hint_username"><i>Username</i></string>
     <string name="hint_password"><i>Password</i></string>
+    <string name="hint_resetpass"><i>Email Address</i></string>
 
     <string-array name="expiry_month_arrays">
         <item>Expiry Month</item>

@@ -41,11 +41,9 @@ public class RegisterActivity <FirebaseFirestore> extends AppCompatActivity impl
     private ArrayList<String> followings;
     Button btnaccount;
     EditText input_fullname, input_email, input_password, input_address, input_city, input_state, input_zip, input_number;
-    TextView txtMDhash;
-    TextView sign_up;
+    TextView sign_up, text_hash;
     CheckBox text_terms;
 
-    private ProgressDialog progressDialog;
 
 
     @Override
@@ -54,7 +52,7 @@ public class RegisterActivity <FirebaseFirestore> extends AppCompatActivity impl
         setContentView(R.layout.user_register);
         mAuth  = FirebaseAuth.getInstance();
 
-        progressDialog = new ProgressDialog(this);
+
 
         btnaccount = findViewById(R.id.btnaccount);
         input_fullname = findViewById(R.id.input_fullname);
@@ -67,12 +65,13 @@ public class RegisterActivity <FirebaseFirestore> extends AppCompatActivity impl
         input_number = findViewById(R.id.input_number);
         sign_up = findViewById(R.id.sign_up);
         text_terms = findViewById(R.id.text_terms);
+        text_hash = findViewById(R.id.text_hash);
 
 
         btnaccount .setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                computeMD5Hash(input_password.toString());
               Registeruser();
             }
         });
@@ -92,6 +91,7 @@ public class RegisterActivity <FirebaseFirestore> extends AppCompatActivity impl
         String state = input_state.getText().toString();
         String zip = input_zip.getText().toString();
         String number = input_number.getText().toString();
+
 
         CollectionReference dbUserdata = db.collection("Userdata");
         Userclass userclass = new Userclass(fullname, password, username, address, city, state, zip, number);
@@ -129,16 +129,16 @@ public class RegisterActivity <FirebaseFirestore> extends AppCompatActivity impl
         input_zip.setError(null);
         text_terms.setError(null);
         final String username = input_email.getText().toString().trim();
-        final String password = input_email.getText().toString().trim();
+        final String password = input_password.getText().toString().trim();
         String fullname = input_fullname.getText().toString().trim();
         String number = input_number.getText().toString().trim();
         String address = input_address.getText().toString().trim();
         String state = input_state.getText().toString().trim();
         String city = input_city.getText().toString().trim();
         String zip = input_zip.getText().toString().trim();
+        String hashPass = text_hash.getText().toString();
 
-
-        CheckBox checkBox = (CheckBox)findViewById(R.id.text_terms);
+        CheckBox checkBox = findViewById(R.id.text_terms);
         checkBox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -209,12 +209,7 @@ public class RegisterActivity <FirebaseFirestore> extends AppCompatActivity impl
                             if (task.isSuccessful()) {
 //
                                 Toast.makeText(RegisterActivity.this, "Registered Successfully!", Toast.LENGTH_SHORT).show();
-                                Handler handler = new Handler();
-                                handler.postDelayed(new Runnable() {
-                                    public void run() {
-                                        progressDialog.dismiss();
-                                    }
-                                }, 3000);
+
                                 try {
                                     addDatatoDatabase();
                                 } catch (Exception e) {
@@ -249,7 +244,7 @@ public class RegisterActivity <FirebaseFirestore> extends AppCompatActivity impl
                 MD5Hash.append(h);
             }
 
-            txtMDhash.setText(MD5Hash);
+            text_hash.setText(MD5Hash);
 
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();

@@ -32,6 +32,7 @@
 
     <EditText
         android:id="@+id/login_username"
+        android:singleLine="true"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_centerHorizontal="true"
@@ -49,6 +50,7 @@
 
     <EditText
         android:id="@+id/login_password"
+        android:inputType="textPassword"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_gravity="center"
@@ -110,7 +112,7 @@
         android:max="100"
         android:backgroundTint="@color/white"
         android:layout_below="@+id/framelauout"
-        android:indeterminateTint="#1a09d6"
+        android:progress="1"
         android:layout_marginTop="-370dp"
         />
 </LinearLayout>

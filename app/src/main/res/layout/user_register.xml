@@ -22,6 +22,7 @@
         />
     <EditText
         android:id="@+id/input_fullname"
+        android:singleLine="true"
         android:layout_width="match_parent"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
@@ -36,6 +37,7 @@
         />
     <EditText
         android:id="@+id/input_email"
+        android:singleLine="true"
         android:layout_width="match_parent"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
@@ -51,6 +53,8 @@
         />
     <EditText
         android:id="@+id/input_password"
+        android:singleLine="true"
+        android:inputType="textPassword"
         android:layout_width="match_parent"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
@@ -67,6 +71,7 @@
 
     <EditText
         android:id="@+id/input_address"
+        android:singleLine="true"
         android:layout_width="match_parent"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
@@ -82,6 +87,7 @@
         />
     <EditText
         android:id="@+id/input_city"
+        android:singleLine="true"
         android:layout_width="match_parent"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
@@ -97,6 +103,7 @@
         />
     <EditText
         android:id="@+id/input_state"
+        android:singleLine="true"
         android:layout_width="match_parent"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
@@ -112,6 +119,7 @@
         />
     <EditText
         android:id="@+id/input_zip"
+        android:singleLine="true"
         android:layout_width="match_parent"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
@@ -127,6 +135,7 @@
         />
     <EditText
         android:id="@+id/input_number"
+        android:singleLine="true"
         android:layout_width="match_parent"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
@@ -163,6 +172,11 @@
         android:textAllCaps="true"
         android:textColor="@color/black"
 
+        />
+    <TextView
+        android:id="@+id/text_hash"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         />
 
 </LinearLayout>

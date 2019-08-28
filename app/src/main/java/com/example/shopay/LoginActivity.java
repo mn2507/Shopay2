@@ -20,6 +20,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.SignInMethodQueryResult;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
@@ -78,7 +79,19 @@ public class LoginActivity extends AppCompatActivity {
         });
 
     }
+    @Override
+    public void onStart() {
+        super.onStart();
+        // Check if user is signed in (non-null) and update UI accordingly.
+        FirebaseUser currentUser = mAuth.getCurrentUser();
 
+        if (currentUser == null){
+
+            Intent authIntent = new Intent(LoginActivity.this, AuthActivity.class);
+            startActivity(authIntent);
+            finish();
+        }
+    }
 
     private void userLogin() {
 

@@ -37,14 +37,19 @@ public class UserMainMenu extends AppCompatActivity implements View.OnClickListe
         String a = mAuth.getCurrentUser().getEmail();
 
         loggedin_user_email = findViewById(R.id.loggedin_user_email);
-        loggedin_user_email.setText("Welcome, "+a);
+        loggedin_user_email.setText("Welcome, "+a+"!");
         //getString(R.string.welcome_user, user.getEmail());
-
-
+        btnaddpaymethod = findViewById(R.id.btnaddpaymethod);
 
         btnlogout = findViewById(R.id.btnlogout);
-
         btnlogout.setOnClickListener(this);
+
+        btnaddpaymethod.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(UserMainMenu.this, PaymentMethod.class));
+            }
+        });
     }
 
     @Override

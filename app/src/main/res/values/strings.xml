@@ -8,6 +8,7 @@
     <string name="hint_password"><i>Password</i></string>
     <string name="hint_resetpass"><i>Email Address</i></string>
     <string name="welcome_user"><i>Welcome, %1$s</i></string>
+    <string name="hint_qr_generator"><i>Enter the code</i></string>
     <string-array name="expiry_month_arrays">
         <item>Expiry Month</item>
         <item>January</item>

@@ -102,6 +102,6 @@
         android:textSize="18dp"
         android:textAllCaps="true"
         android:textColor="@color/black"
-
+        android:fontFamily="@font/sfprodisplaybold"
         />
 </LinearLayout>

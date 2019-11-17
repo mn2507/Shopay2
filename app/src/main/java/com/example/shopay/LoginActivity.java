@@ -16,6 +16,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.shopay.Retrofit.NodeJs;
+import com.example.shopay.Retrofit.RetrofitClient;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -28,6 +30,11 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+
 public class LoginActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private DocumentReference db;
@@ -37,6 +44,7 @@ public class LoginActivity extends AppCompatActivity {
     TextView txtforgotpass;
     private ProgressBar progressBar;
     private int i = 0;
+    NodeJs myAPI;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +52,10 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.user_login);
         com.google.firebase.firestore.FirebaseFirestore db = com.google.firebase.firestore.FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
+
+
+        Retrofit retrofit = RetrofitClient.getInstance();
+        myAPI = retrofit.create(NodeJs.class);
 
 
 
@@ -90,6 +102,8 @@ public class LoginActivity extends AppCompatActivity {
 
     private void userLogin() {
 
+
+
         final String username = login_username.getText().toString().trim();
         String password = login_password.getText().toString().trim();
         if (TextUtils.isEmpty(username)) {
@@ -131,6 +145,53 @@ public class LoginActivity extends AppCompatActivity {
                             if (task.isSuccessful()) {
                                 //start the profile activity
                                 finish();
+
+                                Call<user> call = myAPI.gettoken(login_username.getText().toString());
+
+                                call.enqueue(new Callback<user>() {
+                                    @Override
+                                    public void onResponse(Call<user> call, Response<user> response) {
+
+                                        user user1=new user();
+
+
+                                       user.setToken(response.body().getToken1());
+
+                                       user.setEmail(login_username.getText().toString());
+
+                                       String a = user.getToken();
+
+                                        Toast.makeText(LoginActivity.this, ""+response.body().getStatus1(), Toast.LENGTH_LONG).show();
+
+
+//                                        db.collection("Userdata").whereEqualTo("username",login_username.getText().toString())
+//                                                .get()
+//                                                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+//                                                    @Override
+//                                                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+//                                                        if (task.isSuccessful()) {
+//
+//
+//                                                            user.setEmail( task.getResult().getDocuments().get(0).get("username").toString());
+//                                                        } else {
+//
+//                                                        }
+//                                                    }
+//                                                });
+
+
+
+                                    }
+
+                                    @Override
+                                    public void onFailure(Call<user> call, Throwable t) {
+
+                                        Toast.makeText(LoginActivity.this, "Connection error : "+ t.getMessage(), Toast.LENGTH_LONG).show();
+
+                                    }
+                                });
+
+
                                 startActivity(new Intent(getApplicationContext(), UserMainMenu.class));
 
                                 //it have to go to the respective user home page depending on the type of role

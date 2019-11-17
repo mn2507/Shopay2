@@ -32,6 +32,8 @@ import com.google.firebase.firestore.DocumentReference;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 public class RegisterActivity <FirebaseFirestore> extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
@@ -84,7 +86,7 @@ public class RegisterActivity <FirebaseFirestore> extends AppCompatActivity impl
     private void addDatatoDatabase() throws Exception {
 
         String fullname = input_fullname.getText().toString();
-        String password = input_password.getText().toString();
+        //String password = input_password.getText().toString();
         String username = input_email.getText().toString();
         String address = input_address.getText().toString();
         String city = input_city.getText().toString();
@@ -94,7 +96,7 @@ public class RegisterActivity <FirebaseFirestore> extends AppCompatActivity impl
 
 
         CollectionReference dbUserdata = db.collection("Userdata");
-        Userclass userclass = new Userclass(fullname, password, username, address, city, state, zip, number);
+        Userclass userclass = new Userclass(fullname, username, address, city, state, zip, number);
         dbUserdata.add(userclass)
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
@@ -114,7 +116,13 @@ public class RegisterActivity <FirebaseFirestore> extends AppCompatActivity impl
     }
 
     private boolean PasswordValidity(String password) {
-        return password.length() > 8;
+        Pattern pattern;
+        Matcher matcher;
+        final String PASSWORD_PATTERN = "^(?=.*[0-9])(?=.*[A-Z])(?=.*[@#$%^&+=!])(?=\\S+$).{4,}$";
+        pattern = Pattern.compile(PASSWORD_PATTERN);
+        matcher = pattern.matcher(password);
+
+        return matcher.matches();
     }
 
     private void Registeruser() {
@@ -138,68 +146,89 @@ public class RegisterActivity <FirebaseFirestore> extends AppCompatActivity impl
         String zip = input_zip.getText().toString().trim();
         String hashPass = text_hash.getText().toString();
 
-        CheckBox checkBox = findViewById(R.id.text_terms);
-        checkBox.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (((CheckBox)v).isChecked())
-                DisplayToast("CheckBox is checked");
-        else
-            DisplayToast("CheckBox is unchecked");
-            }
-        });
+        final CheckBox checkBox = findViewById(R.id.text_terms);
+
 
 
 
         if (TextUtils.isEmpty(username)) {
             Toast.makeText(this, "Please enter your username/email", Toast.LENGTH_SHORT).show();
             return;
-        } else if (!PasswordValidity(password)) {
+        } else if (!EmailValid(username)) {
             input_email.setError("Invalid username/email");
             return;
         }
+        isCheckEmail();
+
+        if(input_password.getText().toString().length()<8 &&!PasswordValidity(input_password.getText().toString())){
+            input_password.setError("Password should be at least 8 characters long and include special characters");
+        }
+        /*else{
+            System.out.println("Valid");
+        }*/
 
         if (TextUtils.isEmpty(password)) {
             Toast.makeText(this, "Please enter your password", Toast.LENGTH_SHORT).show();
             return;
-        } else if (!PasswordValidity(password)) {
+        }
+        /*else if (!PasswordValidity(password)) {
             input_password.setError("Weak password");
             return;
-        }
+        }*/
 
         if (TextUtils.isEmpty(fullname)) {
-            Toast.makeText(this, "Please enter your full name", Toast.LENGTH_SHORT).show();
+            input_fullname.setError("Please enter your full name");
+            //Toast.makeText(this, "Please enter your full name", Toast.LENGTH_SHORT).show();
             return;
         }
 
         if (TextUtils.isEmpty(number)) {
-            Toast.makeText(this, "Please enter your contact number", Toast.LENGTH_SHORT).show();
+            input_number.setError("Please enter your contact number");
+            //Toast.makeText(this, "Please enter your contact number", Toast.LENGTH_SHORT).show();
             return;
         }
 
         if (TextUtils.isEmpty(address)) {
-            Toast.makeText(this, "Please enter your address", Toast.LENGTH_SHORT).show();
+            input_address.setError("Please enter your Street address");
+            //Toast.makeText(this, "Please enter your Street address", Toast.LENGTH_SHORT).show();
             return;
         }
 
         if (TextUtils.isEmpty(state)) {
-            Toast.makeText(this, "Please enter your state", Toast.LENGTH_SHORT).show();
+            input_state.setError("Please enter your state");
+            //Toast.makeText(this, "Please enter your state", Toast.LENGTH_SHORT).show();
             return;
         }
 
         if (TextUtils.isEmpty(city)) {
-            Toast.makeText(this, "Please enter your city", Toast.LENGTH_SHORT).show();
+            input_city.setError("Please enter your city");
+            //Toast.makeText(this, "Please enter your city", Toast.LENGTH_SHORT).show();
             return;
         }
 
 
 
         if (TextUtils.isEmpty(zip)) {
-            Toast.makeText(this, "Please enter your zip code", Toast.LENGTH_SHORT).show();
+            input_zip.setError("Please enter your zip code");
+            //Toast.makeText(this, "Please enter your zip code", Toast.LENGTH_SHORT).show();
             return;
-        } else {
+        } /*else {
             Toast.makeText(this, "Logged in successfully!", Toast.LENGTH_SHORT).show();
-        }
+        }*/
+
+
+
+        checkBox.setOnClickListener(new View.OnClickListener() {
+           // @Override
+            public void onClick(View v) {
+                if (((CheckBox)v).isChecked()){
+                    return;
+                }
+                //DisplayToast("CheckBox is checked");
+                else
+                    text_terms.setError("CheckBox is unchecked");
+            }
+        });
 
         mAuth.createUserWithEmailAndPassword(username, password)
 
@@ -227,8 +256,7 @@ public class RegisterActivity <FirebaseFirestore> extends AppCompatActivity impl
 
         }
 
-    private void DisplayToast(String checkBox_is_unchecked) {
-    }
+
 
     public void computeMD5Hash(String password){
         try{
@@ -260,7 +288,9 @@ public class RegisterActivity <FirebaseFirestore> extends AppCompatActivity impl
                         if (!check) {
                             Registeruser();
                         } else {
-                            Toast.makeText(getApplicationContext(), "Email already exist, Please try again", Toast.LENGTH_SHORT).show();
+                            input_email.setError("Email already exist, please enter a different email.");
+                            //Toast.makeText(getApplicationContext(), "Email already exist, please try again.", Toast.LENGTH_SHORT).show();
+
                         }
                     }
                 });

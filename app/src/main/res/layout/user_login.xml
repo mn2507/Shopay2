@@ -82,14 +82,13 @@
         android:id="@+id/btnlogin"
         android:layout_width="310dp"
         android:layout_height="wrap_content"
-       android:layout_marginTop="20dp"
-        android:text="Login"
+        android:layout_marginTop="20dp"
         android:background="@drawable/edit_full_border"
-        android:textSize="18dp"
+        android:fontFamily="@font/sfprodisplaybold"
+        android:text="Login"
         android:textAllCaps="true"
         android:textColor="@color/black"
-        android:fontFamily="@font/sfprodisplaybold"
-        />
+        android:textSize="18dp" />
 
     <Button
         android:id="@+id/btncrtaccount"

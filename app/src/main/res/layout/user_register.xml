@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true">
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -130,7 +130,7 @@
         android:padding="10dp"
         android:textColorHint="@color/grey2"
         android:fontFamily="@font/sfprodisplaymediumitalic"
-
+        android:inputType="number"
         android:textColor="@color/white"
         />
     <EditText
@@ -146,20 +146,20 @@
         android:padding="10dp"
         android:textColorHint="@color/grey2"
         android:fontFamily="@font/sfprodisplaymediumitalic"
-
+        android:inputType="phone"
         android:textColor="@color/white"
         />
+
     <CheckBox
         android:id="@+id/text_terms"
-        android:layout_width="match_parent"
+        android:layout_width="395dp"
         android:layout_height="wrap_content"
-        android:textColorHint="@android:color/white"
-        android:hint="I have read and agree to the Privacy Policy"
-        android:buttonTint="@color/yellow"
-        android:fontFamily="@font/sfprodisplaymedium"
         android:layout_marginStart="5dp"
         android:layout_marginTop="10dp"
-        />
+        android:buttonTint="@color/yellow"
+        android:fontFamily="@font/sfprodisplaymedium"
+        android:hint="I have read and agree to the Privacy Policy"
+        android:textColorHint="@android:color/white" />
     <Button
         android:id="@+id/btnaccount"
         android:layout_width="match_parent"
@@ -168,7 +168,7 @@
         android:text="CREATE ACCOUNT"
         android:background="@drawable/edit_full_border"
         android:textSize="18dp"
-        android:fontFamily="@font/sfprodisplaymedium"
+        android:fontFamily="@font/sfprodisplaybold"
         android:textAllCaps="true"
         android:textColor="@color/black"
 

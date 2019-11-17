@@ -36,24 +36,33 @@ public class UserMainMenu extends AppCompatActivity implements View.OnClickListe
 
         String a = mAuth.getCurrentUser().getEmail();
 
+        btnpay=findViewById(R.id.btnpay);
+
         loggedin_user_email = findViewById(R.id.loggedin_user_email);
         loggedin_user_email.setText("Welcome, "+a+"!");
         //getString(R.string.welcome_user, user.getEmail());
         btnaddpaymethod = findViewById(R.id.btnaddpaymethod);
-
+        btnpaymenthistory = findViewById(R.id.btnpaymenthistory);
         btnlogout = findViewById(R.id.btnlogout);
         btnlogout.setOnClickListener(this);
-        btnpay.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(UserMainMenu.this, QR_generator.class));
-            }
-        });
 
         btnaddpaymethod.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(UserMainMenu.this, PaymentMethod.class));
+            }
+        });
+
+        btnpaymenthistory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(UserMainMenu.this, PaymentHistory.class));
+            }
+        });
+        btnpay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(UserMainMenu.this, QR_generator.class));
             }
         });
     }

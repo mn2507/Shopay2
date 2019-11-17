@@ -19,6 +19,7 @@ android {
     }
 }
 
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'androidx.appcompat:appcompat:1.1.0-rc01'
@@ -30,4 +31,11 @@ dependencies {
     implementation 'com.google.firebase:firebase-firestore:21.0.0'
     implementation 'com.google.zxing:core:3.2.1'
     implementation 'com.journeyapps:zxing-android-embedded:3.2.0@aar'
+    implementation 'com.stripe:stripe-android:10.4.1'
+    implementation 'com.squareup.okhttp3:okhttp:3.4.1'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.11'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
+    implementation 'com.squareup.retrofit2:converter-scalars:2.1.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.6.1'
 }

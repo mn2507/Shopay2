@@ -9,6 +9,17 @@
 
 
     </style>
+    <style name="AppTheme.CardTheme">
+        <item name="colorPrimary">@color/grey2</item>
+        <item name="colorPrimaryDark">@color/grey2</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textColorHint">@color/yellow</item>
+        <item name="colorControlNormal">@color/yellow3</item>
+        <item name="colorControlActivated">@color/colorAccent</item>
+        <item name="android:textColor">@color/grey2</item>
+        <item name="android:editTextColor">@color/grey2</item>
+        <item name="android:fontFamily">@font/sfprodisplaymedium</item>
+    </style>
 
 
 </resources>

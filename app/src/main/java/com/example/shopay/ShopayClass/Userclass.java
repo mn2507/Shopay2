@@ -1,11 +1,10 @@
 package com.example.shopay.ShopayClass;
 
 public class Userclass {
-    public String fullname,password,username,address,city,state,zip,number;
+    public String fullname,username,address,city,state,zip,number;
 
-    public Userclass (String fullname, String password, String username, String address, String city, String state, String zip, String number){
+    public Userclass (String fullname, String username, String address, String city, String state, String zip, String number){
         this.fullname = fullname;
-        this.password = password;
         this.username = username;
         this.address = address;
         this.city = city;
@@ -20,14 +19,6 @@ public class Userclass {
 
     public void setFullname(String fullname) {
         this.fullname = fullname;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public String getUsername() {

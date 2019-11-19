@@ -63,7 +63,7 @@ public class QR_generator extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             MultiFormatWriter multiFormatWriter = new MultiFormatWriter();
                             try{
-                                BitMatrix bitMatrix = multiFormatWriter.encode(task.getResult().getDocuments().get(0).get("details")+ " dbaesufh4siofhu4sidhfewiofheriuofuhfy7f67gi7c6egdh78iwuaehvsriuhf83fge4ufhdwiaoehcvzrsiuhfio3jdi:OSztr6767yu8i7", BarcodeFormat.QR_CODE,200,200);
+                                BitMatrix bitMatrix = multiFormatWriter.encode(task.getResult().getDocuments().get(0).get("details")+ " dbaesufh4siofhu4sidhfewiofheriuofuhfy7f67gi7c6egdh78iwuaehvsriuhf83fge4ufhdwiaoehcvzrsiuhfio3jdi:OSztr6767yu8i7 "+task.getResult().getDocuments().get(0).get("username"), BarcodeFormat.QR_CODE,200,200);
                                 BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
                                 Bitmap bitmap = barcodeEncoder.createBitmap(bitMatrix);
                                 qr_image.setImageBitmap(bitmap);

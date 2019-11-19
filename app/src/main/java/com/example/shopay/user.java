@@ -1,6 +1,18 @@
 package com.example.shopay;
 
+import java.util.List;
+
 public class user {
+
+    private List<history> history;
+
+    public List<com.example.shopay.history> getHistory() {
+        return history;
+    }
+
+    public void setHistory(List<com.example.shopay.history> history) {
+        this.history = history;
+    }
 
     public  String fullname1,password1,username1,address1,city1,state1,zip1,number1, email1, cusid1, status1,token1,last41;
 

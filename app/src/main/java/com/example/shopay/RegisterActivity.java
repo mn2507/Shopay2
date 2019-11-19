@@ -10,6 +10,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -69,12 +70,11 @@ public class RegisterActivity <FirebaseFirestore> extends AppCompatActivity impl
         text_terms = findViewById(R.id.text_terms);
         text_hash = findViewById(R.id.text_hash);
 
-
         btnaccount .setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 computeMD5Hash(input_password.toString());
-              Registeruser();
+                isCheckEmail();
             }
         });
 
@@ -146,11 +146,6 @@ public class RegisterActivity <FirebaseFirestore> extends AppCompatActivity impl
         String zip = input_zip.getText().toString().trim();
         String hashPass = text_hash.getText().toString();
 
-        final CheckBox checkBox = findViewById(R.id.text_terms);
-
-
-
-
         if (TextUtils.isEmpty(username)) {
             Toast.makeText(this, "Please enter your username/email", Toast.LENGTH_SHORT).show();
             return;
@@ -158,7 +153,7 @@ public class RegisterActivity <FirebaseFirestore> extends AppCompatActivity impl
             input_email.setError("Invalid username/email");
             return;
         }
-        isCheckEmail();
+
 
         if(input_password.getText().toString().length()<8 &&!PasswordValidity(input_password.getText().toString())){
             input_password.setError("Password should be at least 8 characters long and include special characters");
@@ -216,19 +211,11 @@ public class RegisterActivity <FirebaseFirestore> extends AppCompatActivity impl
             Toast.makeText(this, "Logged in successfully!", Toast.LENGTH_SHORT).show();
         }*/
 
-
-
-        checkBox.setOnClickListener(new View.OnClickListener() {
-           // @Override
-            public void onClick(View v) {
-                if (((CheckBox)v).isChecked()){
-                    return;
-                }
-                //DisplayToast("CheckBox is checked");
-                else
-                    text_terms.setError("CheckBox is unchecked");
-            }
-        });
+        if(!text_terms.isChecked()){
+            text_terms.setError("CheckBox is unchecked");
+            Toast.makeText(this, "Please accept the Privacy Policy to continue.", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
         mAuth.createUserWithEmailAndPassword(username, password)
 
@@ -273,6 +260,7 @@ public class RegisterActivity <FirebaseFirestore> extends AppCompatActivity impl
             }
 
             text_hash.setText(MD5Hash);
+            text_hash.setVisibility(View.INVISIBLE);
 
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
@@ -280,21 +268,25 @@ public class RegisterActivity <FirebaseFirestore> extends AppCompatActivity impl
 
     }
     public void isCheckEmail() {
-        mAuth.fetchSignInMethodsForEmail(input_email.getText().toString())
-                .addOnCompleteListener(new OnCompleteListener<SignInMethodQueryResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<SignInMethodQueryResult> task) {
-                        boolean check = !task.getResult().getSignInMethods().isEmpty();
-                        if (!check) {
-                            Registeruser();
-                        } else {
-                            input_email.setError("Email already exist, please enter a different email.");
-                            //Toast.makeText(getApplicationContext(), "Email already exist, please try again.", Toast.LENGTH_SHORT).show();
 
+        if(EmailValid(input_email.getText().toString())) {
+            mAuth.fetchSignInMethodsForEmail(input_email.getText().toString())
+                    .addOnCompleteListener(new OnCompleteListener<SignInMethodQueryResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<SignInMethodQueryResult> task) {
+                            boolean check = !task.getResult().getSignInMethods().isEmpty();
+                            if (!check) {
+                                Registeruser();
+                            } else {
+                                input_email.setError("Email already exist, please enter a different email.");
+                                //Toast.makeText(getApplicationContext(), "Email already exist, please try again.", Toast.LENGTH_SHORT).show();
+
+                            }
                         }
-                    }
-                });
-
+                    });
+        }else{
+            input_email.setError("Invalid email address");
+        }
     }
     private void ClearAll(){
         input_email.setText("");

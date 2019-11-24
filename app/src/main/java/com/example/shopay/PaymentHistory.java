@@ -1,22 +1,20 @@
 package com.example.shopay;
 
-import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentChange;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.google.zxing.BarcodeFormat;
-import com.google.zxing.MultiFormatWriter;
-import com.google.zxing.WriterException;
-import com.google.zxing.common.BitMatrix;
-import com.journeyapps.barcodescanner.BarcodeEncoder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,40 +22,56 @@ import java.util.List;
 public class PaymentHistory extends AppCompatActivity {
 
     ListView mListView;
+    ArrayAdapter<history> arrayAdapter;
+    DocumentReference documentReference;
+    private static final String TAG = "MyActivity";
+    RecyclerView recyclerView;
+    DataAdapter dataAdapter;
+    List<history> histories;
+    FirebaseFirestore db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_payment_history);
 
-         mListView = (ListView) findViewById(R.id.listView);
+        histories=new ArrayList<>();
+
+        dataAdapter= new DataAdapter(histories);
+
+        recyclerView = findViewById(R.id.listView1);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(dataAdapter);
+
+         arrayAdapter = new ArrayAdapter<history>(this,android.R.layout.simple_list_item_1);
 
 //        final ListView mListView = (ListView) findViewById(R.id.listView);
 
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
+         db = FirebaseFirestore.getInstance();
 
 
-        db.collection("history").whereEqualTo("email", user.getEmail())
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull final Task<QuerySnapshot> task) {
-                        List<history> historyList = new ArrayList<>();
-                        if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                history history = document.toObject(history.class);
-                                historyList.add(history);
-                            }
+        documentReference=db.collection("history").document();
 
+        db.collection("history").addSnapshotListener(new EventListener<QuerySnapshot>() {
+            @Override
+            public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
 
-                            HistoryListAdapter adapter = new HistoryListAdapter(getApplicationContext(), historyList);
-                            mListView.setAdapter(adapter);
+                for (DocumentChange d: queryDocumentSnapshots.getDocumentChanges()) {
+                    String email;
+                    String price;
 
-                        }
+                    history history1=d.getDocument().toObject(com.example.shopay.history.class);
+
+                    if (history1.getEmail().equals(user.getEmail())) {
+
+                        histories.add(history1);
+
+                        dataAdapter.notifyDataSetChanged();
                     }
-
-
-                });
+                }
+            }
+        });
     }
 
 }

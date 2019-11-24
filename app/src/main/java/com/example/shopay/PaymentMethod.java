@@ -52,7 +52,10 @@ public class PaymentMethod extends AppCompatActivity {
                     public void onComplete(@NonNull final Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
 
-                            last4.setText(task.getResult().getDocuments().get(0).get("last4").toString());
+                            if(!task.getResult().isEmpty())
+                            {
+                                last4.setText(task.getResult().getDocuments().get(0).get("last4").toString());
+                            }
 
                         }
                     }

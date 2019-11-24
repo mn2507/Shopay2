@@ -2,13 +2,22 @@ package com.example.shopay;
 
 public class history {
 
-    private String price, product;
+    public history() {
+    }
 
-    public history()
-    {}
+    private String price, product,email;
 
-    public history(String price, String product) {
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public history(String price, String product, String email) {
         this.price = price;
+        this.email=email;
         this.product = product;
     }
 
